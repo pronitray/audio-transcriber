@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap');
+:root {
+  --bg-color: #F7F5F2;
+  --container-bg: #FFFFFF;
+  --text-main: #2C2A29;
+  --text-muted: #706C69;
+  --accent-color: #D9734E;
+  --accent-hover: #BF603E;
+  --border-color: #E6E2DD;
+  --result-bg: #FCFBF9;
+  --font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  background-color: var(--container-bg);
+  max-width: 550px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(44, 42, 41, 0.06);
+  text-align: center;
+}
+
+.container h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.file-input {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.file-input input[type="file"] {
+  font-family: var(--font-family);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  background: var(--bg-color);
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px dashed var(--border-color);
+  width: 100%;
+  max-width: 400px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.file-input input[type="file"]:hover {
+  border-color: var(--accent-color);
+}
+
+.file-input input[type="file"]::file-selector-button {
+  background-color: var(--container-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-right: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-input input[type="file"]::file-selector-button:hover {
+  background-color: var(--bg-color);
+}
+
+.upload-button {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2.5rem;
+}
+
+.upload-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.upload-button:active {
+  transform: scale(0.98);
+}
+
+.upload-button:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.upload-button:disabled:active {
+  transform: none;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.upload-button:disabled:not(:empty) {
+  animation: pulse 1.5s infinite;
+}
+
+.transcription-result {
+  background-color: var(--result-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  min-height: 120px;
+}
+
+.transcription-result h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.transcription-result p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+}
+
+.transcription-result p:empty::before {
+  content: "Your transcription will appear here once the file is processed...";
+  color: #B5B0A8;
+  font-style: italic;
+}
